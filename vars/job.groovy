@@ -28,7 +28,7 @@ def call(body) {
     node(args.label)
     {
       // Enforcing pipeline timeout 
-      timeout (time: timeValue, unit: 'NANOSECONDS')
+      timeout (time: timeValue, unit: 'HOURS')
       { 
         // Cleanup workspace at the start of the job
         step([$class: 'WsCleanup'])
