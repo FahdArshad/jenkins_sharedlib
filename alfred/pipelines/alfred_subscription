@@ -1,0 +1,26 @@
+job {
+    // Name of the pipeline to be created
+    name = "alfred-repo-subscription"
+
+    // Type of pipeline periodic, on-demand and per-commit
+    pipeline_type = "on-demand"
+
+    // On-demand parameters
+    ondemand_variables = "REPO_NAME= (Repo name to subscribe);BRANCH= (Branch name of repo);GIT_URL= (Git url for repo)"
+
+    // Name of Workload
+    workload = "alfred"
+
+    // Repos to be cloned for the pipeline
+    clone_repos = "alfred"
+
+    // Alfred agents to be assigned to the pipeline
+    label = "master"
+
+    // Scripts to be run in different stages
+    stage1_PreCleanup = "./alfred_master_seedjob.sh"
+
+    // Alert build status of each job on specified email address
+    email = "afahd@xgrid.co"
+
+}
