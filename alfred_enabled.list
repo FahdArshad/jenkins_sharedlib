@@ -1,4 +1,5 @@
 ats master ssh://git@172.19.0.77:29418/source/ats.git
 kts master ssh://git@172.19.0.77:29418/source/kts.git
 hts master ssh://git@172.19.0.77:29418/source/hts.git
-test master https://github.com/FahdArshad/test.git
+jenkins_sharedlib master https://github.com/FahdArshad/jenkins_sharedlib.git
+
