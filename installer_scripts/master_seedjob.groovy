@@ -5,8 +5,6 @@
 def cfg_file = readFileFromWorkspace('config.ini')
 def config = new ConfigSlurper().parse(cfg_file)
 
-print config.keySet()
-
 // Get all contents of Alfred enabled list
 def alfred_list = readFileFromWorkspace('alfred_enabled.list')
 String[] split_file = alfred_list.split(System.getProperty("line.separator"));
@@ -21,8 +19,8 @@ for (def line:split_file)
   repo = line_split.getAt(0)
   branch = line_split.getAt(1)
   url = line_split.getAt(2)
-  url_map[repo] = url
   branch_map[repo] = branch
+  url_map[repo] = url
 }
 
 // Iterating over each repo inside the map
@@ -56,18 +54,31 @@ for ( project in branch_map.keySet() )
                 remote
                 {
                     credentials('jenkins')
-                    url(alfredRepo)
+                    url(url_map[project])
                 }
                 branch ('master')
+                extensions
+                {
+                    relativeTargetDirectory(project)
+                }
             }
+        }
+
+        triggers
+        {
+            scm('H/05 * * * *')
         }
 
         // Groovy script to be called inside the seedjob
         steps
         {
+            if(project != "alfred")
+            {
+                shell('git clone ' + alfredRepo)
+            }
             dsl
             {
-                external('groovy_scripts/template_seedjob.groovy')
+                external('alfred/groovy_scripts/template_seedjob.groovy')
             }
         }
     }
