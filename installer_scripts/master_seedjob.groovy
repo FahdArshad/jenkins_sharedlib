@@ -72,7 +72,7 @@ for ( project in branch_map.keySet() )
         // Groovy script to be called inside the seedjob
         steps
         {
-            if(project != "alfred")
+            if(project != "jenkins_sharedlib")
             {
                 shell('git clone ' + alfredRepo)
             }
