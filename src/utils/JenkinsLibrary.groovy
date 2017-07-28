@@ -38,6 +38,16 @@ def stageList(def args)
    return list;
 }
 
+def ticketGeneration()
+{
+  @Grab(group='org.apache.commons', module='commons-io', version='1.3.2')
+  def cfg_file = readFileFromWorkspace('config.ini')
+  def config = new ConfigSlurper().parse(cfg_file)
+  def bugzilla_server_ip = config.bugzilla_ip
+  echo "$bugzilla_server_ip"
+
+}
+
 //************************************************************************
 // Function   : prepareStages
 // Purpose    : calls a function that creates stages using a list
