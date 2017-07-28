@@ -90,17 +90,17 @@ def postPipeline(def args, String buildStatus)
   emailAlert(buildStatus, args.email)
 }
 
-def alfredInfo(def args)
-{
-  echo "$args.artifacts"
-  dir (args.artifacts)
-  { 
-      def contents ="machine_arch = $args.machine_arch \n" + 
-                    "build_url = ${BUILD_URL}"  
+//def alfredInfo(def args)
+//{
+//  echo "$args.artifacts"
+//  dir (args.artifacts)
+//  { 
+//      def contents ="machine_arch = $args.machine_arch \n" + 
+//                    "build_url = ${BUILD_URL}"  
      
-      writeFile file: 'alfred.info', text: "$contents"
-  }
-}
+//      writeFile file: 'alfred.info', text: "$contents"
+//  }
+//}
 
 def emailAlert(String build_result,owners)
 {
