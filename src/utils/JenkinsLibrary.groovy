@@ -85,7 +85,7 @@ def archive_artifacts(def dir)
 
 def postPipeline(def args, String buildStatus)
 {
-  alfredInfo(args)
+  //alfredInfo(args)
   archive_artifacts(args.artifacts)
   emailAlert(buildStatus, args.email)
 }
