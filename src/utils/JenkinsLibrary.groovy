@@ -41,9 +41,10 @@ def stageList(def args)
 def ticketGeneration()
 {
   @Grab(group='org.apache.commons', module='commons-io', version='1.3.2')
-  def cfg_file = readFile('config.ini')
-  def config = new ConfigSlurper().parse(cfg_file)
-  def bugzilla_server_ip = config.bugzilla_ip
+  //def cfg_file = readFile('config.ini')
+  //def config = new ConfigSlurper().parse(cfg_file)
+   
+  def bugzilla_server_ip = "172.19.48.238"
   echo "$bugzilla_server_ip"
 
 }
