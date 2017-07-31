@@ -1,7 +1,7 @@
 package utils;
 
 import java.nio.charset.StandardCharsets
-
+@Grab(group='org.apache.commons', module='commons-io', version='1.3.2')
 //************************************************************************
 // Function   : countStages
 // Purpose    : count the number of stages present inside the jenkinsfile
@@ -40,15 +40,10 @@ def stageList(def args)
 
 def ticketGeneration()
 {
-  @Grab(group='org.apache.commons', module='commons-io', version='1.3.2')
-   
   def cfg_file = libraryResource 'alfred.ini'
-  //def cfg_file = readFile file:'myFile.txt', text:libraryResource("path/to/myFile.txt")
   def config = new ConfigSlurper().parse(cfg_file)
-   
   def bugzilla_server_ip = config.bugzilla_ip
   echo "$bugzilla_server_ip"
-
 }
 
 //************************************************************************
