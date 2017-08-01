@@ -34,9 +34,12 @@ def call(body) {
         step([$class: 'WsCleanup'])
 
         // Clone stage to fetch latest repository to be consumed by the pipeline
-        stage ('Clone')
+        dir ('cloning')
         {
-            git credentialsId: 'jenkins', url: repourl
+          stage ('Clone')
+          {
+              git credentialsId: 'jenkins', url: repourl
+          }
         }
 
         // Count of total stages found in jenkinsfile
